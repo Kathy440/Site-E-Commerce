@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title article.title %}
+
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8" style="width: 100%;">
+                <img src="{{ article.imageArticle }}" alt="" style="width: 50%;">
+            </div>
+            <div class="col-md-4">
+                <h1>{{ article.title }}</h1>
+                <p style="color: green">{% if article.sold == '0' %} En stock {% endif %} </p>
+                <p style="color: red">{% if article.sold == '1' %} Rupture de stock{% endif %}</p>
+                <div class="text-primary" style="font-weight: bold; font-size: 3rem">
+                    {{ article.formattedPrix }} €
+                    {#                    <p>{{ article.promotion }} €</p>#}
+                </div>
+                {% if article.sold == '0' %}
+                <a href="{{ path('cart_add', { id: article.id }) }}" class="btn btn-primary">
+                    Acheter
+                </a>
+                 {% else %}
+                    <p>Ce produit est en rupture de stock</p>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <p>
+            {{ article.description | nl2br }}
+        </p>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Caractéristiques</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Couleur</td>
+                        <td>{{ article.couleurType }}</td>
+                    </tr>
+                    <tr>
+                        <td>Poids</td>
+                        <td> {% if article.categorie == '3' %} {{ article.poids }} kg {% endif %}
+                            {% if article.categorie == '0' %} {{ article.poids }} grammes{% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Capaciter</td>
+                        <td>{{ article.capacite }} gb</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <a href="{{ path('article.index') }}" style="float: right">
+            <button class="btn btn-dark">Retour</button>
+        </a>
+    </div>
+{% endblock %}

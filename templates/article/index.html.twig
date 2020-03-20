@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Les Articles' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="col">
+                    {{ form_row(form.categorie) }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary">Recherche</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+<div class="container mt-4">
+        <h1>Les articles</h1>
+        <p>Découvrer tout les articles du site</p>
+
+
+        <div class="row">
+            <div class="col-md-4" style="display: contents;">
+                {% for  article in articles %}
+                    {{ include ('article/_article.html.twig') }}
+                {% endfor %}
+            </div>
+
+            {#<div class="col-3">
+                <div class="card">
+                    <div class="card-body" style="">
+                        <h5 class="card-title">
+                            <a href="{{ path('article.show', { id: article.id }) }}">{{ article.title }}</a>
+                            <div style="width: 100%">
+                                <img src="{{ article.imageArticle }}" alt="Image de l'article" style="width: 100%; height: 50%">
+                            </div>
+                            <p>{{ article.description |slice(0, 6 ) }}...</p>
+                            <hr>
+                            <div class="text-primary" style="font-weight: bold">{{ article.FormattedPrix }} €</div>
+                        </h5>
+                        <a href="{{ path('article.show', { id: article.id }) }}">
+                            <button class="btn btn-secondary">Voir le détail</button>
+                        </a>
+                    </div>
+                </div>
+            </div>#}
+        </div>
+
+</div>
+
+{% endblock %}

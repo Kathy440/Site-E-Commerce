@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <br>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-4">{{ form_row(form.title) }}</div>
+        <div class="col-md-4">{{ form_row(form.prix) }}</div>
+        <div class="col-md-4">{{ form_row(form.couleur) }} {# <span style="display: inline-flex">*</span>#}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">{{ form_row(form.poids) }}</div>
+        <div class="col-md-2">{{ form_row(form.capacite) }}</div>
+        <div class="col-md-2">{{ form_row(form.promotion) }}</div>
+        <div class="col-md-3">{{ form_row(form.categorie) }}</div>
+        <div class="col-md-2">{{ form_row(form.sold) }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">{{ form_row(form.description) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">{{ form_row(form.image_article) }}</div>
+    </div>
+
+    {{ form_rest(form) }}
+    <button class="btn btn-primary" style="margin-left: auto; margin-right: auto">{{ button|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+    <br>
+
+    <a href="{{ path('admin.article.index') }}" style="float: right">
+        <button class="btn btn-dark">Retour</button>
+    </a>
+</div>
+
+
+
